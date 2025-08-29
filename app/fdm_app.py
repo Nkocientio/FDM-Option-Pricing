@@ -49,7 +49,7 @@ def main():
     st.sidebar.write("")
     Nt = option_start.tSteps
     file_name = f"{style}_{C_P} {Ns} x {Nt} step by {method} ({BC}-BC).xlsx"
-    if Nt < 101:
+    if (Ns+Nt) < 201:
         download = st.sidebar.selectbox("Download the Grid ?", ['No','Yes'])
     else: 
         download = 'No'
