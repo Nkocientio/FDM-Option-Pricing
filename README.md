@@ -10,7 +10,7 @@
   
 ### Model Summary
 - An Explicit method is unstable, time steps is increased accordingly read [(3)](https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis) [(4)](https://math.stackexchange.com/questions/3989847/stability-analysis-finite-difference-methods-black-scholes-pde).
-- An exercisable node under (Implicit, CrankNilson) is priced using the PSOR Algorithm.
+- An exercisable node under (Implicit, Crank-Nicolson) is priced using the PSOR Algorithm.
 - Bermudan Option exercise dates can be customized, monthly,quarterly, half-yearly or annually.
 - Excel file is downloadable.
   
