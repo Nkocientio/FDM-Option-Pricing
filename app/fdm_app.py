@@ -20,7 +20,7 @@ def main():
     vol = st.sidebar.number_input("Volatility (σ)", min_value=0.001,max_value=1.0, value=0.2)
     T = st.sidebar.number_input("Time to Maturity (T)", min_value=0.0001, value=1.0)
     r = st.sidebar.number_input("Risk-Free Rate (r)", min_value=0.0, value=0.06)
-    q = st.sidebar.number_input("Dividend Yield (q)", min_value=0.0,max_value = r, value=0.02)
+    q = st.sidebar.number_input("Dividend Yield (q)", min_value=0.0,max_value = r, value=0.0)
     sMin = st.sidebar.number_input("Asset Min", min_value=0.00, value=0.00)
     sMax = st.sidebar.number_input( "Asset Max", min_value=sMin, value=round(2*max(S,K)*np.exp((r-q)*T),2) )
     Ns = st.sidebar.number_input("Number of Asset Steps", min_value=3, max_value=1000, value=12)
