@@ -15,4 +15,4 @@
 - Excel file is downloadable.
   
 ### Streamlit app
-See the app [here](https://binomial-model-option-pricing-k.streamlit.app/).
+See the app [here](https://fdm-model-option-pricing-k.streamlit.app/).
