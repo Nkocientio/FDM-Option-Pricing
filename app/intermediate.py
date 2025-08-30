@@ -68,19 +68,23 @@ class FDM_Start():
                 self.b_dates.append(f"{date.astype(datetime).strftime('%d %b %Y')} ({node})")
             return arr
         else:
-            return np.full(n, False)  #Eur style
+            arr = np.full(n, False)
+            arr[-1] = True
+            return arr  #Eur style
 
     def boundries(self):
         self.payoff =  np.maximum(self.optionRef*(self.assetV - self.strike), 0)
         self.grid[:, -1] = self.payoff
         for j in range(self.tSteps):
             t_factor = self.dt * (self.tSteps - j)
-            sMin_discounted = self.sMin * np.exp(-self.divRate * t_factor)
-            sMax_discounted = self.sMax * np.exp(-self.divRate * t_factor)
             if self.exerciseNodes[j]:
                 strike_val = self.strike
+                sMin_discounted = self.sMin
+                sMin_discounted = self.sMax
             else:
                 strike_val = self.strike * np.exp(-self.rfRate * t_factor)
+                sMin_discounted = self.sMin * np.exp(-self.divRate * t_factor)
+                sMax_discounted = self.sMax * np.exp(-self.divRate * t_factor)
                 
             self.grid[0, j] = max(self.optionRef * (sMin_discounted - strike_val), 0)
             self.grid[-1, j] = max(self.optionRef * (sMax_discounted - strike_val), 0)
