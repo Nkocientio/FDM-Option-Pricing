@@ -80,7 +80,7 @@ class FDM_Start():
             if self.exerciseNodes[j]:
                 strike_val = self.strike
                 sMin_discounted = self.sMin
-                sMin_discounted = self.sMax
+                sMax_discounted = self.sMax
             else:
                 strike_val = self.strike * np.exp(-self.rfRate * t_factor)
                 sMin_discounted = self.sMin * np.exp(-self.divRate * t_factor)
