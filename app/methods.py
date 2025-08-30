@@ -22,7 +22,7 @@ class FDM_Method(FDM_Start):
         upper = self.A.diagonal(1)
         lower = self.A.diagonal(-1) 
         
-        nextCol = self.grid[1:-1, -1]
+        nextCol = self.grid[1:-1, -1].copy()
         for j in reversed(range(self.tSteps)):
             colLoop = 0
             if self.method == 'Implicit':
