@@ -8,7 +8,7 @@ def main():
     st.markdown(f"Model Source: [Quintus-Zhang](https://quintus-zhang.github.io/post/on_pricing_options_with_finite_difference_methods/)⭐️ also read [(0)](http://www.goddardconsulting.ca/option-pricing-finite-diff-index.html).")
     st.sidebar.title("Options Pricer")
     st.sidebar.markdown("**Made by:**")
-    st.sidebar.write(random.choice(['Nkosembi','Matsie','Siba','Diya', 'Adriaan','Levy','Rakhosa'])) 
+    st.sidebar.write(random.choice(['Nkosembi','Matsie','Siba','Diya', 'Adriaan'])) 
     st.sidebar.header("Model Inputs")
     
     method = st.sidebar.selectbox("FDM Method", ['Crank','Explicit','Implicit'])
