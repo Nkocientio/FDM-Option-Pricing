@@ -2,8 +2,10 @@ import streamlit as st
 from intermediate import *
 
 class FDM_Method(FDM_Start):
-    count = 0
-    mayNotConverge = False
+    def __init__(self,style,optionType,spotPrice,strike,expire,rfRate,divRate,vol,tSteps,sSteps,sMin,sMax,method,BC,dates,w=1.1,tol=1e-6):
+        super().__init__(style,optionType,spotPrice,strike,expire,rfRate,divRate,vol,tSteps,sSteps,sMin,sMax,method,BC,dates,w,tol)
+        self.loopCount = 0
+        self.mayNotConverge = False
     def explicitMethod(self):
         for j in reversed(range(self.tSteps)):
             nextCol = self.A.dot(self.grid[1:-1,j+1])
@@ -42,7 +44,7 @@ class FDM_Method(FDM_Start):
                     currVal[0] = np.maximum(w * (nextCol[0] - upper[0] * oldVal[1]) / diag[0] + (1 - w) * oldVal[0],payoff[1])
 
                     for i in range(1,sSteps-2):
-                        FDM_Method.count += 1
+                        self.loopCount += 1
                         currVal[i] = np.maximum(w * (nextCol[i] - lower[i-1] * currVal[i-1]- upper[i] * oldVal[i+1]) / diag[i]+ (1 - w) *oldVal[i],payoff[i+1])
                         
                     currVal[-1] = np.maximum(w * (nextCol[-1] - lower[-1] * currVal[-2]) / diag[-1] + (1 - w) * oldVal[-1],payoff[-2])
@@ -50,7 +52,7 @@ class FDM_Method(FDM_Start):
                     if np.max(np.abs(currVal - oldVal)) < self.tol:
                         break
                     elif colLoop > self.tSteps*15:
-                        FDM_Method.mayNotConverge = True
+                        self.mayNotConverge = True
                         break
             
                 nextCol = currVal
