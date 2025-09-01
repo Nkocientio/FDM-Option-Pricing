@@ -6,7 +6,7 @@ import scipy.sparse as sp
 from code_excel import print_excel,get_workbook_as_bytes
 
 class FDM_Start():
-    def __init__(self,style,optionType,spotPrice,strike,expire,rfRate,divRate,vol,tSteps,sSteps,sMin,sMax,method,BC,dates,w=1.2,tol=8):
+    def __init__(self,style,optionType,spotPrice,strike,expire,rfRate,divRate,vol,tSteps,sSteps,sMin,sMax,method,BC,dates,w,tol):
         self.optionType = optionType
         self.style = style
         self.spotPrice = spotPrice
@@ -42,14 +42,12 @@ class FDM_Start():
         return int(tSteps)
 
     def tolerance(self,tolN):
-        n = int(self.sSteps/100)
+        n = (self.sSteps+self.tSteps)//200
         newTolN = 12-n
-        if self.sSteps < 201:
-            return tolN
-        elif tolN < newTolN:
+        if tolN < newTolN:
             return tolN
         else:
-            return newTolN
+            return max(4,newTolN)
 
     def exerciseOn(self):
         n = self.tSteps + 1 
@@ -117,7 +115,6 @@ class FDM_Start():
             self.A[0,1] -= self.a[0]
             self.A[-1,-2] -=  self.c[-1]
             self.A[-1,-1] += 2*self.c[-1]
-
 
     def excel_values(self,bsPrice,price):
         _exercised = (self.exerciseNodes) & (self.grid == self.payoff.T.reshape(-1,1)) & (self.grid > 0)
