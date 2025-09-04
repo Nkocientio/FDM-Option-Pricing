@@ -47,7 +47,8 @@ class FDM_Start():
         if tolN < newTolN:
             return tolN
         else:
-            return max(4,newTolN)
+            #return max(4,newTolN)
+            return tolN
 
     def exerciseOn(self):
         n = self.tSteps + 1 
