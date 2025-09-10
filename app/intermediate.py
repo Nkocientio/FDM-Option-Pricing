@@ -37,8 +37,8 @@ class FDM_Start():
         if self.method == 'Explicit':
             dt = 0.99/(self.sSteps*self.vol)**2
             Nt = int(np.ceil(self.expire/dt))
-            # if tSteps < Nt:
-            #     return Nt
+            if tSteps < Nt:
+                return Nt
         return int(tSteps)
 
     def tolerance(self,tolN):
