@@ -5,10 +5,10 @@ from bermuda import get_dates
 def main():
     st.title("FDM Option Pricing")
     st.markdown(f"##### (American, Bermudan and European) style options")
-    st.markdown(f"Model Source: [Quintus-Zhang](https://quintus-zhang.github.io/post/on_pricing_options_with_finite_difference_methods/)⭐️ also read [(0)](http://www.goddardconsulting.ca/option-pricing-finite-diff-index.html).")
+    st.markdown(f"Good article: [Quintus-Zhang](https://quintus-zhang.github.io/post/on_pricing_options_with_finite_difference_methods/)⭐️ also read [(0)](http://www.goddardconsulting.ca/option-pricing-finite-diff-index.html).")
     st.sidebar.title("Options Pricer")
     st.sidebar.markdown("**Made by:**")
-    st.sidebar.write(random.choice(['Nkosembi','Matsie','Siba','Diya', 'Adriaan'])) 
+    st.sidebar.write(random.choice(['Nkosembi','Matsie','Siba','Diya', 'Adriaan','Nasreen','Tumo','Levy'])) 
     st.sidebar.header("Model Inputs")
     
     method = st.sidebar.selectbox("FDM Method", ['Crank','Explicit','Implicit'])
